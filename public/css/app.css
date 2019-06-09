@@ -1,0 +1,44 @@
+.title h1 {
+    font-size:  100px;
+}
+.title a {
+    color: #FFF;
+    font-family: Roboto;
+    text-shadow: -6px 11px 8px rgba(0,0,0,1);
+}
+.title a:hover {
+    text-decoration: none;
+    color: #F1F1F1;
+}
+#bg {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  min-width: 100%;
+  min-height: 100%;
+}
+#outer {
+    text-align: center;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+
+#table-container {
+    height:100%;
+    width:100%;
+    display:table;
+}
+
+#table-cell {
+    vertical-align:middle;
+    height:100%;
+    display:table-cell;
+}
+@media (max-width: 768px) { 
+    .title h1 {
+        font-size:  50px;
+    }
+}

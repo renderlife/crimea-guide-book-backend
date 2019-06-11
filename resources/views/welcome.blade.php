@@ -4,7 +4,7 @@
   <title>Путеводитель по Крыму | Крым глазами местных</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
   <meta name="description" content="Сайт том как и где отдохнуть в Крыму"> 
-  <meta name="keywords" content="крым, достопримечательности, туризм, отдых, отпуск">
+  <meta name="keywords" content="крым, крымглазамиместных, достопримечательности, туризм, отдых, отпуск">
   <meta name="yandex-verification" content="57c1c1233a26b0bd" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700" rel="stylesheet">
@@ -83,7 +83,7 @@
     <div id="outer">
         <div id="table-container">
             <div id="table-cell" class="title">
-                <a href="https://www.youtube.com/КРЫМГЛАЗАМИМЕСТНЫХ" target="_blank"><h1>Крым глазами местных</h1></a>  
+                <a title="Перейти на канал YouTube" href="https://www.youtube.com/КРЫМГЛАЗАМИМЕСТНЫХ" target="_blank"><h1>Крым глазами местных</h1></a>
             </div>
         </div>
     </div>    

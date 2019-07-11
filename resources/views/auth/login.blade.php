@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -26,6 +26,11 @@
             }
         }
     </style>
+
+    {{--    Попробовать исвользовать секции--}}
+    {{--    https://stackoverflow.com/questions/46939027/laravel-5-5-referenceerror-is-not-defined--}}
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 </head>
 <body class="text-center">
 <form class="form-signin">

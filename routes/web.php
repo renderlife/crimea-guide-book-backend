@@ -16,9 +16,8 @@ Route::get('/', function () {
 });
 
 Route::group(['middlware' => 'guest'], function (){
-    Route::get('/register', function(){
-        return view('auth.register');
-    });
+    Route::get('/register', 'Auth\RegisterController@showRegistrationForm');
+    Route::post('/register', 'Auth\RegisterController@register');
     Route::get('/login', function(){
         return view('auth.login');
     });

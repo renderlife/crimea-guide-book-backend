@@ -7,8 +7,8 @@
 
     <title>Вход на сайт</title>
     
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/styles.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
 
     <style>
         .bd-placeholder-img {

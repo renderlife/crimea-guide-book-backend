@@ -33,7 +33,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
 </head>
 <body class="text-center">
-<form class="form-signin">
+<form class="form-signin" method="post">
     {!! csrf_field() !!}
     <img class="mb-4 logo-login" src="/images/logo_kgm_youtube.jpg" alt="" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal">Пожалуйста войдите</h1>
@@ -43,7 +43,7 @@
     <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Пароль" required>
     <div class="checkbox mb-3">
         <label>
-            <input type="checkbox" value="remember-me"> Восстановить пароль
+            <input type="checkbox" value="1" name="remember-me"> Восстановить пароль
         </label>
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>

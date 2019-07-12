@@ -31,10 +31,9 @@
     {{--    https://stackoverflow.com/questions/46939027/laravel-5-5-referenceerror-is-not-defined--}}
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
-
 </head>
 <body class="text-center">
-<form class="form-signin form-signin-register" method="post">
+<form class="form-signin form-signin-register" method="post" action="">
     {!! csrf_field() !!}
     <img class="mb-4 logo-login" src="/images/logo_kgm_youtube.jpg" alt="" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal">Регистрация</h1>
@@ -46,11 +45,11 @@
     <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Придумайте пароль" required>
 
     <label for="inputPasswordConfirm" class="sr-only">Пароль</label>
-    <input type="password" name="password_сonfirmation" id="inputPasswordConfirm" class="form-control" placeholder="Повторите пароль" required>
+    <input type="password" name="password_confirmation" id="inputPasswordConfirm" class="form-control" placeholder="Повторите пароль" required>
 
     <div class="checkbox mb-3">
         <label>
-            <input type="checkbox" value="remember"> Запомнить
+            <input type="checkbox" value="1" name="remember"> Запомнить
         </label>
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Регистрация</button>

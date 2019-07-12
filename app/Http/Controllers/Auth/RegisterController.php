@@ -47,13 +47,15 @@ class RegisterController extends Controller
      */
     public function register(Request $request)
     {
-        dd($request);
+        try {
+            $this->validator($request->all())->validate();
+        } catch (\Exception $e) {
+            dd($e);
+        }             
 
-        $this->validator($request->all())->validate();
-
-        event(new Registered($user = $this->create($request->all())));
-
-        $this->guard()->login($user);
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $isAuth = $request->has('remember') ? true : false;
 
         return $this->registered($request, $user)
             ?: redirect($this->redirectPath());
@@ -68,7 +70,6 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);

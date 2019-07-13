@@ -16,9 +16,13 @@ Route::get('/', function () {
 });
 
 Route::group(['middlware' => 'guest'], function (){
-    Route::get('/register', 'Auth\RegisterController@showRegistrationForm');
+    Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
     Route::post('/register', 'Auth\RegisterController@register');
     Route::get('/login', function(){
         return view('auth.login');
     });
+});
+
+Route::group(['middlware' => 'auth'], function (){
+    Route::get('/my/account', 'AccountController@index')->name('account');
 });

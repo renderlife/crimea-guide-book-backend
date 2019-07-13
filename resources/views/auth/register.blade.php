@@ -52,6 +52,13 @@
             <input type="checkbox" value="1" name="remember"> Запомнить
         </label>
     </div>
+
+    @if (session('status'))
+        <div class="alert alert-danger">
+            {{ session('status') }}
+        </div>
+    @endif
+
     <button class="btn btn-lg btn-primary btn-block" type="submit">Регистрация</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
 </form>

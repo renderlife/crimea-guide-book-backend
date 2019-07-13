@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use mysql_xdevapi\Exception;
 
 class RegisterController extends Controller
 {
@@ -50,15 +51,24 @@ class RegisterController extends Controller
         try {
             $this->validator($request->all())->validate();
         } catch (\Exception $e) {
-            dd($e);
-        }             
+            return back()->with('status', 'Ошибка!');
+        }
 
         $email = $request->input('email');
         $password = $request->input('password');
         $isAuth = $request->has('remember') ? true : false;
 
-        return $this->registered($request, $user)
-            ?: redirect($this->redirectPath());
+        $oUser = $this->create(['email' => $email, 'password' => $password]);
+
+        if (!($oUser instanceof User)) {
+            return back()->with('error', 'Ошибка! Новый пользователь не создан');
+        }
+
+        if ($isAuth) {
+            $this->guard()->login($oUser);
+        }
+
+        return redirect(route('account'))->with('success', 'Вы успешно авторизированы');
     }
 
     /**
@@ -84,7 +94,6 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);

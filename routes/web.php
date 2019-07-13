@@ -20,13 +20,18 @@ Route::group(['middlware' => 'guest'], function (){
     Route::post('/register', 'Auth\RegisterController@register');
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
     Route::post('/login', 'Auth\LoginController@login');
-
 });
 
+// Аккаунт
 Route::group(['middlware' => 'auth'], function (){
     Route::get('/my/account', 'AccountController@index')->name('account');
     Route::get('/logout', function (){
         \Illuminate\Support\Facades\Auth::logout();
         return redirect(route('login'));
     })->name('logout');
+
+    // Админ
+    Route::group(['middlware' => 'admin'], function (){
+        Route::get('/admin', 'Admin\AccountController@index')->name('admin');
+    });
 });

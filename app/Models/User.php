@@ -42,7 +42,7 @@ class User extends Authenticatable
         'id'                => 'integer',
         'email'             => 'string',
         'password'          => 'string',
-        'isAdmin'           => 'boolean',
+        'is_admin'           => 'boolean',
         'remember_token'    => 'string',
         'created_at'        => 'datetime',
         'updated_at'        => 'datetime',

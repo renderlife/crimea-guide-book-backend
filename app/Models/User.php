@@ -6,10 +6,14 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Routing\Route;
+use phpDocumentor\Reflection\Types\Integer;
 
 class User extends Authenticatable
 {
     use Notifiable;
+
+    protected $table = 'users';
+    protected $primaryKey = 'id';
 
     /**
      * The attributes that are mass assignable.
@@ -35,6 +39,19 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
+        'id'                => 'integer',
+        'email'             => 'string',
+        'password'          => 'string',
+        'isAdmin'           => 'boolean',
+        'remember_token'    => 'string',
+        'created_at'        => 'datetime',
+        'updated_at'        => 'datetime',
         'email_verified_at' => 'datetime',
     ];
+
+    protected $dates = [
+        'created_at',
+        'updated_at',
+    ];
+
 }

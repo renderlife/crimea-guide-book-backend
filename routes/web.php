@@ -18,11 +18,15 @@ Route::get('/', function () {
 Route::group(['middlware' => 'guest'], function (){
     Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
     Route::post('/register', 'Auth\RegisterController@register');
-    Route::get('/login', function(){
-        return view('auth.login');
-    });
+    Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+    Route::post('/login', 'Auth\LoginController@login');
+
 });
 
 Route::group(['middlware' => 'auth'], function (){
     Route::get('/my/account', 'AccountController@index')->name('account');
+    Route::get('/logout', function (){
+        \Illuminate\Support\Facades\Auth::logout();
+        return redirect(route('login'));
+    })->name('logout');
 });

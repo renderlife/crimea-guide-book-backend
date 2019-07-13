@@ -43,9 +43,16 @@
     <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Пароль" required>
     <div class="checkbox mb-3">
         <label>
-            <input type="checkbox" value="1" name="remember-me"> Восстановить пароль
+            <input type="checkbox" value="1" name="remember"> Запомнить
         </label>
     </div>
+
+    @if (session('status'))
+        <div class="alert alert-danger">
+            {{ session('status') }}
+        </div>
+    @endif
+
     <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
 </form>

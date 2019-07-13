@@ -10,6 +10,6 @@ class AccountController extends Controller
 {
     public function index()
     {
-        echo 'Добро пожаловать';
+        return view('account.index');
     }
 }

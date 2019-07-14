@@ -26,7 +26,7 @@ Route::group(['middlware' => 'guest'], function (){
 Route::group(['middlware' => 'auth'], function (){
     Route::get('/my/account', 'AccountController@index')->name('account');
     Route::get('/logout', function (){
-        \Illuminate\Support\Facades\Auth::logout();
+        Auth::logout();
         return redirect(route('login'));
     })->name('logout');
 

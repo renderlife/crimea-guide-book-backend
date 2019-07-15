@@ -15,15 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['middlware' => 'guest'], function (){
+//Route::group(['middlware' => 'guest'], function (){
+
+Route::middleware(['guest'])->group(function () {
     Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
     Route::post('/register', 'Auth\RegisterController@register');
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
     Route::post('/login', 'Auth\LoginController@login');
 });
 
-// Аккаунт
-Route::group(['middlware' => 'auth'], function (){
+Route::middleware(['auth'])->group(function () {
     Route::get('/my/account', 'AccountController@index')->name('account');
     Route::get('/logout', function (){
         Auth::logout();
@@ -31,7 +32,7 @@ Route::group(['middlware' => 'auth'], function (){
     })->name('logout');
 
     // Админ
-    Route::group(['middlware' => 'admin'], function (){
+    Route::middleware(['admin'])->group(function () {
         Route::get('/admin', 'Admin\AccountController@index')->name('admin');
     });
 });

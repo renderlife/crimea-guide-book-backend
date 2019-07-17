@@ -7,10 +7,10 @@
 
     <title>Панель управления</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
-    <link href="css/dashboard.css" rel="stylesheet">
-
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/alertify.min.css') }}" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
@@ -101,14 +101,17 @@
             </div>
         </nav>
 
-        @yielf('content.index')
+        @yielf('content')
     </div>
 </div>
+
+@include('inc.messages')
 
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('js/feather.min.js') }}"></script>
 <script src="{{ asset('js/dashboard.js') }}"></script>
+<script src="{{ asset('js/alertify.min.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 
 </body>

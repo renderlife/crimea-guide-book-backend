@@ -14,6 +14,12 @@ class CategoriesController extends Controller
     }
 
     //
+    public function addCategory($id)
+    {
+        return true;
+    }
+    
+    //
     public function editCategory($id)
     {
         return true;

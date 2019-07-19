@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateUserTable extends Migration
+class UpdateUserNameTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class UpdateUserTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->boolean('is_admin')->default(0)->change();
+            $table->string('name')->nullable()->change();
         });
     }
 
@@ -26,7 +26,7 @@ class UpdateUserTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('is_admin')->default(0)->change();
+            $table->string('name');
         });
     }
 }

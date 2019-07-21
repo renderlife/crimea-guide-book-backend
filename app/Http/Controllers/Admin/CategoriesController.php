@@ -14,19 +14,19 @@ class CategoriesController extends Controller
     }
 
     //
-    public function addCategory($id)
+    public function addCategory()
     {
-        return true;
+        return view('admin.categories.index');
     }
     
     //
-    public function editCategory($id)
+    public function editCategory(int $id)
     {
         return true;
     }
 
     //
-    public function deleteCategory($id)
+    public function deleteCategory(int $id)
     {
         return true;
     }

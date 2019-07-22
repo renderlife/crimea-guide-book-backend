@@ -10,25 +10,32 @@ class CategoriesController extends Controller
     //
     public function index()
     {
-        return true;
+        return view('admin.categories.index');
     }
 
     //
     public function addCategory()
     {
-        return view('admin.categories.index');
+        return view('admin.categories.add');
+    }
+    
+    //
+    public function addRequestCategory(Request $request)
+    {
+        $objCategory = new Category();
+        dd($request->all());
     }
     
     //
     public function editCategory(int $id)
     {
-        return true;
+        return view('admin.categories.add');
     }
 
     //
     public function deleteCategory(int $id)
     {
-        return true;
+        return view('admin.categories.index');
     }
 
 }

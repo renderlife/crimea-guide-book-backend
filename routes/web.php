@@ -32,13 +32,14 @@ Route::middleware(['auth'])->group(function () {
     })->name('logout');
 
     // Админ
-    Route::middleware(['admin'])->group(['prefix' => 'admin'], function () {
+    Route::middleware(['admin'])->prefix('admin')->group(function () {
         Route::get('/', 'Admin\AccountController@index')->name('admin');
         Route::get('/categories', 'Admin\CategoriesController@index')->name('categories');
         Route::get('/categories/add', 'Admin\CategoriesController@addCategory')->name('categories.add');
+        Route::post('/categories/add', 'Admin\CategoriesController@addRequestCategory');
         Route::get('/categories/edit/{id}', 'Admin\CategoriesController@editCategory')
             ->where('id', '\d+')
-            ->name('categories.add');
+            ->name('categories.edit');
         Route::get('/categories/delete/{id}', 'Admin\CategoriesController@deleteCategory')
             ->where('id', '\d+')
             ->name('categories.delete');

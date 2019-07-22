@@ -21,13 +21,13 @@
         </div>
     </div>
 
-    @include('inc.messages')
-
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('js/feather.min.js') }}"></script>
     <script src="{{ asset('js/dashboard.js') }}"></script>
     <script src="{{ asset('js/alertify.min.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+
+    @include('inc.messages')
 </body>
 </html>

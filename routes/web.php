@@ -34,6 +34,8 @@ Route::middleware(['auth'])->group(function () {
     // Админ
     Route::middleware(['admin'])->prefix('admin')->group(function () {
         Route::get('/', 'Admin\AccountController@index')->name('admin');
+
+        // Категории для статей
         Route::get('/categories', 'Admin\CategoriesController@index')->name('categories');
         Route::get('/categories/add', 'Admin\CategoriesController@addCategory')->name('categories.add');
         Route::post('/categories/add', 'Admin\CategoriesController@addRequestCategory');
@@ -43,5 +45,16 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/categories/delete/{id}', 'Admin\CategoriesController@deleteCategory')
             ->where('id', '\d+')
             ->name('categories.delete');
+
+        // Категории для точек
+        Route::get('/categories-points', 'Admin\CategoriesPointsController@index')->name('categories-points');
+        Route::get('/categories-points/add', 'Admin\CategoriesPointsController@addCategory')->name('categories-points.add');
+        Route::post('/categories-points/add', 'Admin\CategoriesPointsController@addRequestCategory');
+        Route::get('/categories-points/edit/{id}', 'Admin\CategoriesPointsController@editCategory')
+            ->where('id', '\d+')
+            ->name('categories-points.edit');
+        Route::get('/categories-points/delete/{id}', 'Admin\CategoriesPointsController@deleteCategory')
+            ->where('id', '\d+')
+            ->name('categories-points.delete');
     });
 });

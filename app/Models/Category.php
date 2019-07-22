@@ -10,17 +10,11 @@ class Category extends Model
 	protected $primaryKey = 'id';
 	protected $fillable = [
 		'name', 
-		'name_s', 
-		'code', 
+		'code',
 		'description',
 	];
 	protected $dates = [
 		'created_at', 
 		'updated_at',
 	];
-
-    protected function FunctionName($value='')
-    {
-    	# code...
-    }
 }

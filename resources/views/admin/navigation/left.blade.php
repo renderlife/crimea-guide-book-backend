@@ -43,13 +43,13 @@
         </h6>
         <ul class="nav flex-column mb-2">
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('categories') }}">
+                <a class="nav-link" href="{{ route('categories-points') }}">
                     <span data-feather="list"></span>
                     Категории точек
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('categories') }}">
                     <span data-feather="list"></span>
                     Категории статей
                 </a>

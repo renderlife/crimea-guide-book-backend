@@ -11,28 +11,59 @@
             </div>
         </div>
 
-        <h2>Section title</h2>
         <div class="table-responsive">
             <table class="table table-striped table-sm">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Header</th>
+                        <th>ID</th>
+                        <th>Название</th>
+                        <th>Название (множ.)</th>
+                        <th>Символьный код</th>
+                        <th>Описание</th>
+                        <th>Дата добавления</th>
+                        <th>Действия</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1,001</td>
-                        <td>Lorem</td>
-                        <td>ipsum</td>
-                        <td>dolor</td>
-                        <td>sit</td>
-                    </tr>
+                    @foreach ($categoties as $category)
+                        <tr>
+                            <td>{{ $category->id }}</td>
+                            <td>{{ $category->name }}</td>
+                            <td>{{ $category->name_s }}</td>
+                            <td>{{ $category->code }}</td>
+                            <td>{!! $category->description !!}</td>
+                            <td>{{ $category->created_at->format('d-m-Y H:i') }}</td>
+                            <td>
+                                <a href="{!! route('categories-points.edit', $category->id) !!}">Редактировать</a><br><a href="" class="js-delete-category-points" data-id="{{ $category->id }}" >Удалить</a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
     </main>
+@stop
+
+@section('js')
+    <script>
+        $(document).ready(function() {
+            $('.js-delete-category-points').on('click', function (event) {
+                event.preventDefault();
+                if (confirm("Вы точно хотите удалить данную категорию?")){
+                    let id = $(this).data('id');
+                    $.ajax({
+                        type: "DELETE",
+                        url: "{!! route('categories-points.delete') !!}",
+                        data: {_token: "{{ csrf_token() }}", id: id},
+                        complete: function () {
+                            alertify.success("{{ trans('messages.admin.categorySuccessDelete') }}");
+                            location.reload();
+                        }
+                    });
+                } else {
+                    alertify.error("{{ trans('messages.admin.categoryErrorDelete') }}");
+                }
+            });
+        });
+    </script>
 @stop

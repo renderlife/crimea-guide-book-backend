@@ -65,7 +65,7 @@
   </style>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
-<body> 
+<body>
     @if (Route::has('login'))
         <div class="top-right links">
             @auth
@@ -86,7 +86,7 @@
                 <a title="Перейти на канал YouTube" href="https://www.youtube.com/КРЫМГЛАЗАМИМЕСТНЫХ" target="_blank"><h1>Крым глазами местных</h1></a>
             </div>
         </div>
-    </div>    
+    </div>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 
     <!-- Yandex.Metrika counter -->

@@ -29,5 +29,6 @@
     <script src="{{ asset('js/app.js') }}"></script>
 
     @include('inc.messages')
+    @yield('js')
 </body>
 </html>

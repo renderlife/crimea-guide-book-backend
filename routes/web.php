@@ -42,8 +42,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/categories/edit/{id}', 'Admin\CategoriesController@editCategory')
             ->where('id', '\d+')
             ->name('categories.edit');
-        Route::get('/categories/delete/{id}', 'Admin\CategoriesController@deleteCategory')
+        Route::post('/categories/edit/{id}', 'Admin\CategoriesController@editRequestCategory')
             ->where('id', '\d+')
+            ->name('categories.post-edit');
+        Route::delete('/categories/delete', 'Admin\CategoriesController@deleteCategory')
             ->name('categories.delete');
 
         // Категории для точек
@@ -53,8 +55,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/categories-points/edit/{id}', 'Admin\CategoriesPointsController@editCategory')
             ->where('id', '\d+')
             ->name('categories-points.edit');
-        Route::get('/categories-points/delete/{id}', 'Admin\CategoriesPointsController@deleteCategory')
+        Route::post('/categories-points/edit/{id}', 'Admin\CategoriesPointsController@editRequestCategory')
             ->where('id', '\d+')
+            ->name('categories-points.post-edit');
+        Route::delete('/categories-points/delete', 'Admin\CategoriesPointsController@deleteCategory')
             ->name('categories-points.delete');
     });
 });

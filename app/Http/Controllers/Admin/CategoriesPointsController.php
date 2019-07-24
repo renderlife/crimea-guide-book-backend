@@ -72,10 +72,10 @@ class CategoriesPointsController extends Controller
     public function editRequestCategory(Request $request, int $id)
     {
         try {
-            /*$this->validate($request, [
-                'name_cat'  => 'required|unique:categories_for_points,name|string|min:1|max:255',
-                'code'      => 'required|unique:categories_for_points,code|alpha_dash|min:1|max:20',
-            ]);*/
+            $this->validate($request, [
+                'name_cat'  => 'required|unique:categories_for_points,name,' . $id . '|string|min:1|max:255',
+                'code'      => 'required|unique:categories_for_points,code,' . $id . '|alpha_dash|min:1|max:20',
+            ]);
             $objCategory = new CategoryPoint();
             $objCategory = $objCategory->find($id);
 

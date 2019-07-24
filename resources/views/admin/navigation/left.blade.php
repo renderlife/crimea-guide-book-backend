@@ -13,19 +13,19 @@
         </h6>
         <ul class="nav flex-column mb-2">
             <li class="nav-item">
-                <a class="nav-link" href="/admin/points/">
+                <a class="nav-link" href="{!! route('points') !!}">
                     <span data-feather="map-pin"></span>
                     Точки
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{!! route('points.comments') !!}">
                     <span data-feather="message-square"></span>
                     Комментарии точек
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/admin/articles/">
+                <a class="nav-link" href="{!! route('articles') !!}">
                     <span data-feather="book"></span>
                     Статьи
                 </a>
@@ -33,7 +33,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <span data-feather="message-square"></span>
-                    Комментарии статей
+                    Комментарии статей (!!!)
                 </a>
             </li>
         </ul>

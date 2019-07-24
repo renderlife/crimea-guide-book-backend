@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePointsTable extends Migration
+class CreateArticlesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,12 @@ class CreatePointsTable extends Migration
      */
     public function up()
     {
-        Schema::create('points', function (Blueprint $table) {
+        Schema::create('articles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('coordinate', 50);
-            $table->integer('city_id');
-            $table->string('street', 50);
-            $table->string('house', 10);
-            $table->string('place');
             $table->string('title');
-            $table->text('short_text');
-            $table->text('full_text');
-            $table->text('picture_cover');
+            $table->text('short_text')->nullable();
+            $table->text('full_text')->nullable();
+            $table->text('picture_cover')->nullable();
             $table->string('author')->nullable(); //[TODO] сделать привязку к пользователю, пока просто текст
             $table->timestamps();
         });
@@ -36,6 +31,6 @@ class CreatePointsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('points');
+        Schema::dropIfExists('articles');
     }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.admin');
+@extends('layouts.admin')
 @section('content')
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -30,11 +30,20 @@
             </div>
 
             <div class="input-group mb-3">
+                <select name="categories" class="custom-select" multiple>
+                    <option value="0" selected>Выберите категорию</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
                 <select name="city" class="custom-select">
                     <option value="0" selected>Выберите город</option>
-                    <option value="1">Ялта</option>
-                    <option value="2">Алушта</option>
-                    <option value="3">Севастополь</option>
+                    @foreach ($cities as $city)
+                        <option value="{{ $city['id'] }}">{{ $city['name'] }}</option>
+                    @endforeach
                 </select>
             </div>
 

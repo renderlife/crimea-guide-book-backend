@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\CategoryPoint;
 use App\Models\Point;
 use Illuminate\Http\Request;
+use App\Http\Requests\PointRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Log;
 
@@ -23,43 +25,37 @@ class PointsController extends Controller
 
     public function addPoint()
     {
-        return view('admin.points.add');
+        $objCategories = new CategoryPoint();
+        $categories = $objCategories->get();
+
+        $cities = [
+            0 => ['id' => 1, 'name' => 'Ялта'],
+            1 => ['id' => 2, 'name' => 'Алушта'],
+            2 => ['id' => 3, 'name' => 'Севастополь'],
+        ];
+
+        return view('admin.points.add', ['categories' => $categories, 'cities' => $cities]);
     }
 
-    public function addRequestPoint(Request $request)
+    public function addRequestPoint(PointRequest $request)
     {
-        try {
-            $this->validate($request, [
-                'title' => 'required|unique:points,title|string|min:1|max:255',
-                'code'  => 'required|unique:points,code|alpha_dash|min:1|max:50',
-                'coordinate'  => 'max:50',
-                'city_id'  => 'numeric',
-                'street'  => 'max:50',
-                'house'  => 'max:10',
-                'place'  => 'max:255',
-                'author'  => 'max:255',
-            ]);
-            $objPoint = new Point();
-            $objPoint = $objPoint->create([
-                'title'         => $request->input('title'),
-                'code'          => $request->input('code'),
-                'street'        => $request->input('street'),
-                'city_id'       => $request->input('city'),
-                'house'         => $request->input('house'),
-                'place'         => $request->input('place'),
-                'full_text'     => $request->input('full_text'),
-                'short_text'    => $request->input('short_text'),
-                'picture_cover' => $request->input('picture_cover'),
-                'author'        => $request->input('author'),
-            ]);
-            if ($objPoint) {
-                return redirect()->route('points')->with('success', trans('messages.admin.pointSuccessAdd'));
-            } else {
-                return back()->with('error', trans('messages.admin.pointErrorAddValid'));
-            }
-        } catch (ValidationException $e) {
-            Log::error($e->getMessage());
-            return back()->with('error', trans('messages.admin.pointErrorAdd') . $e->getMessage());
+        $objPoint = new Point();
+        $objPoint = $objPoint->create([
+            'title'         => $request->input('title'),
+            'code'          => $request->input('code'),
+            'street'        => $request->input('street'),
+            'city_id'       => $request->input('city'),
+            'house'         => $request->input('house'),
+            'place'         => $request->input('place'),
+            'full_text'     => $request->input('full_text'),
+            'short_text'    => $request->input('short_text'),
+            'picture_cover' => $request->input('picture_cover'),
+            'author'        => $request->input('author'),
+        ]);
+        if ($objPoint) {
+            return redirect()->route('points')->with('success', trans('messages.admin.pointSuccessAdd'));
+        } else {
+            return back()->with('error', trans('messages.admin.pointErrorAddValid'));
         }
     }
 

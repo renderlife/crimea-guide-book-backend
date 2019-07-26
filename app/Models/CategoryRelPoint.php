@@ -4,15 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CategoryPoint extends Model
+class CategoryRelPoint extends Model
 {
-    protected $table = 'categories_for_points';
+    protected $table = 'category_points';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'name',
-        'name_s',
-        'code',
-        'description',
+        'category_id',
+        'point_id',
     ];
     protected $dates = [
         'created_at',

@@ -1,4 +1,4 @@
-@extends('layouts.auth');
+@extends('layouts.auth')
 @section('content')
     <form class="form-signin form-signin-register" method="post" action="">
         {!! csrf_field() !!}

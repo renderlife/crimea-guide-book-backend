@@ -30,7 +30,7 @@
             </div>
 
             <div class="input-group mb-3">
-                <select name="categories" class="custom-select" multiple>
+                <select name="categories[]" class="custom-select" multiple>
                     <option value="0" selected>Выберите категорию</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\CategoryPoint;
+use App\Models\CategoryRelPoint;
 use App\Models\Point;
 use Illuminate\Http\Request;
 use App\Http\Requests\PointRequest;
@@ -52,7 +53,17 @@ class PointsController extends Controller
             'picture_cover' => $request->input('picture_cover'),
             'author'        => $request->input('author'),
         ]);
+
         if ($objPoint) {
+            foreach ($request->input('categories') as $key => $category_id) {
+                $category_id = (int)$category_id;
+                $objCategotyPoint = new CategoryRelPoint();
+                $objCategotyPoint = $objCategotyPoint->create([
+                    'category_id'   => $category_id,
+                    'point_id'      => $objPoint->id,
+                ]);
+            }
+
             return redirect()->route('points')->with('success', trans('messages.admin.pointSuccessAdd'));
         } else {
             return back()->with('error', trans('messages.admin.pointErrorAddValid'));
